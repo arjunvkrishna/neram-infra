@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: neram
+      POSTGRES_PASSWORD: /run/secrets/postgres_password
+      POSTGRES_DB: neram_db
+    secrets:
+      - postgres_password
+    networks:
+      - neram
+    restart: unless-stopped
+
+secrets:
+  postgres_password:
+    external: true
+
+networks:
+  neram:
+    driver: overlay
