@@ -1,0 +1,6 @@
+generated-key.pem
+terraform.tfstate.backup
+terraform.tfstate
+neram.pem
+.terraform
+.terraform.lock.hcl
